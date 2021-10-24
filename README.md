@@ -36,13 +36,36 @@ As it is shown in the GIF above, you can use it as a web application. All you ne
 After [running backend server on localhost](https://github.com/makhshari/markovchain/tree/main/backend#run-the-server-on-localhost-api), you can use the backend server as a general API and send request to it from other clients, such as Postman or your custom web client.
 
 ### Standalone Java Application
-This option is good if your input is a text file as the frontend still does not have the uploading file feature (TBD). Currently the Java app supports ```.txt```,```.doc```, and ```.docx``` formats, but the implementation is pretty flexible for adding more formats.  
+This option is good if your input is a text file as the frontend still does not have the uploading file feature (TBD). Currently the Java app supports ```.txt```,```.doc``` (TBD), and ```.docx```(TBD) formats, but the implementation is pretty flexible for adding more formats.  
 
 The only thing you need to do for running it is to follow the steps for [running the server as a standalone Java application](https://github.com/makhshari/markovchain/tree/main/backend#run-as-a-standalone-app). You can simply put your input text file in the appropriate directory, run a CMD command with the mentioned required hyperparameters, and get the generated text on terminal.
 
 # About Text Generation with Markov Chain
+One of the [earlies works](https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=1365979&casa_token=Nqa4vgScJ4MAAAAA:rFLaThFcnZ2P9mxIFHR77yQJikrxCGQBLaJtVVkQtE_mcqBO3jSljgZ830s3SESDnuEwgPOZJw) that use Markov models for text generation describes markov models as an excellent way of abstracting simple concepts  into a relatively easily computable form. To give a better understanding of text generation with Markov Chain I list some of the resources that I found useful and I learned a lot from them:
+[Medium: Practical text generation using GPT-2, LSTM and Markov Chain](https://towardsdatascience.com/text-generation-gpt-2-lstm-markov-chain-9ea371820e1e)
 
-# About This implementation of Markov Chain
+[Healeycodes: Generating Text With Markov Chains](https://healeycodes.com/generating-text-with-markov-chains)
+
+[Youtube video](https://www.youtube.com/watch?v=MGVdu39gT6k)
+
+
+![Markov Chain flow](./markov-chain.gif)
+
+To give a very brief simple description of the idea: It's a stochastic model! :) You represent group of words as states/nodes. You choose a random state (group of word) to start with, and to decide which group comes after, you refer to frequent patterns in the input text. If after the state of "How is", the state of "it going" appeared a lot of times, the chances of choosing "it going" as next words when you saw "how is" would increase. That's why it's a stochastic model ^_^  To make this decisions you make a *chain* of these states using the input text (Markov chain), which represents the frequency of these patterns. Then for generating texts, you start with a random state and refer to the model you built to decide on what is the next state. As I mentioned, each state is just a group of words. Nothing complicated!
+
+ Depends on how frequent a consecutive group of words (postfixes) appear after each group of consecutive words (prefixes), you decide on the next steps for each prefix.
+
+# About my implementation of Markov Chain
+This project has an object-oeriented point-of-view for building the markov chain. In this implementation, we isolate the concept of ```nodes/states``` in the markov chain in the ```Node``` class. Node class is meant to represent each state/node in the Markov chain. Hence, it holds information about itself (```value```) and a list of nodes that may appear after this node (```postfixes```).
+
+So properties of each node/state in Node class are:
+
+- **Value** -> Is a string that represents a unique ID for the state. As we mentioned each state is just a group of words. Value of a state is just a concatenation of those words with space in between them. These values are used as unique keys to be stored in a hashmap in the Markov Model class. So value is some sort of an *ID* for each state.
+
+- **List of postfixes** -> The list holds *ID*s (values) of the states that come after this state. We use list to store duplicate IDs, which will increase their chance to be selected as next states. An optimization would be to have a hashmap of ID -> count which consumes less space but requries more sophisticated method for randomly finding next state while giving higher chance to high-count states.
+ At each step, the generator **randomly** choose a postfix from this list as the next state of a given state. 
+
+Our Markov Model needs to only hold a list of nodes, since each node has a list of nodes after it! So each node is good enough to decide and knoe enough about itself :) To have faster access to each node, we use a hashmap to store IDs -> Node to have O(1) access to retrieve the Node object of any state ID.
 
 # Error handling
 
@@ -52,6 +75,7 @@ The only thing you need to do for running it is to follow the steps for [running
 As the nature of Markov chain text generation algorithm suggests, to be able to consider all hyper parameters in the generated text we need to have:
 
 1- ```prefix-size + postfix-size <= input-size```
+
 2- ```output-size <= input-size```
 
 The first condition is required for a minimal chain with the user postfix and prefix size.
@@ -97,3 +121,7 @@ There are automated tests for testing below functionalities:
 
 - **Testing IO Functionalities**: These tests will measure how our system reacts to invalid input files.
 - **Testing Markov Functionalities**: These tests will measure how certain functionalities related to markov chain operate in regards to different inputs. ```Building markov chain```and ```Generating text with markov chain``` are tested with different inputs and hyper paramteres.
+
+# Next Steps
+- Of course there are more sophisticated methods for text generation combining the idea of Markov Chain with [Reinforcement Learning](https://arxiv.org/pdf/1804.11258.pdf), [Huffman Coding](https://arxiv.org/ftp/arxiv/papers/1811/1811.04720.pdf). 
+- Markov implementation can be used for other goals such as [Text Summarization](https://dl.acm.org/doi/pdf/10.1145/383952.384042?casa_token=EV-Q3uVs9LYAAAAA:73LGvGkm0UpqTKjd4QwPlC1wazp-1oE5DYHU3cC-zjtfpqmJU3MecDoDI-vzVRDzP53QLfBCgaQYSw) which is an exciting goal to explore.
