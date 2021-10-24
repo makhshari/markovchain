@@ -1,18 +1,28 @@
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Make sure you have latest version of node installed. Also, you should have a node package manager installed. Having either (npm)[https://docs.npmjs.com/downloading-and-installing-node-js-and-npm] or (yarn)[https://classic.yarnpkg.com/lang/en/docs/install/#mac-stable] is recommended.
 
-## Available Scripts
+# Steps to have frontend up and running:
 
-In the project directory, you can run:
+- First in the root directory, simply run:
+```npm install```
+or 
+``` yarn install ```
 
-### `yarn start`
+- Now, you should be able to see the node_modules directory in the root directory.
+- Simply run the below command to have the sevrer up and running on: 
+ ```yarn start```
+ or 
+ ``` npm start ```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+These commands will Run the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view the app in the browser.
 
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
+
+## Other Available Scripts
 
 ### `yarn test`
 
