@@ -31,11 +31,10 @@
 # JDT-specific (Eclipse Java Development Tools)     
 .classpath
 
-/target/
-/.classpath
-/*.project
+**/.classpath
+**/*.project
 **/.settings
-/*.springBeans
+**/*.springBeans
 
 
 mvnw*
