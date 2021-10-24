@@ -1,7 +1,7 @@
 # Frontend with React JS
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-Make sure you have latest version of node installed. Also, you should have a node package manager installed. Having either (npm)[https://docs.npmjs.com/downloading-and-installing-node-js-and-npm] or (yarn)[https://classic.yarnpkg.com/lang/en/docs/install/#mac-stable] is recommended.
+Make sure you have latest version of node installed. Also, you should have a node package manager installed. Having either [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) or [yarn](https://classic.yarnpkg.com/lang/en/docs/install/#mac-stable) is recommended.
 
 # Steps to have frontend up and running:
 
@@ -23,8 +23,8 @@ You will also see any lint errors in the console.
 If you're running your API server on any address other than ```localhost:8080```, make sure that you change the configs in the global constants file at ```src/globals.js```.
 
 # UI External Library
-- This project uses (React Bootstrap)[https://react-bootstrap.github.io/] for most of the UI components (Buttons, TextFields)
-- For showing the generated output text like a type-writer, this project utilizes (react-typewriter-effect)[https://github.com/kevoese/react-typewriter-effect] package.
+- This project uses [React Bootstrap](https://react-bootstrap.github.io/) for most of the UI components (Buttons, TextFields)
+- For showing the generated output text like a type-writer, this project utilizes [react-typewriter-effect](https://github.com/kevoese/react-typewriter-effect) package.
 
 
 
