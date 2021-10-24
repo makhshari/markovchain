@@ -54,6 +54,17 @@ If you do not have Maven installed, follow (these steps)[https://maven.apache.or
   ```
   mvn spring-boot:run
   ```
+  Then you can call APIs. Currently there is only one API running:
+  GET ```BASE_URL/output```
+  Query Parameters (all required):
+  **input** -> String
+  **outputSize** -> Positive natural integer
+  **prefixSize** -> Positive natural integer
+  **postfixSize** -> Positive natural integer
+
+  - Missing parameters -> You'll get a *bad request* error.
+  - Valid input -> You'll get the response as a string (Not JSON)
+  - Invalid input -> You'll get the error as a string (Not JSON). The format is ** Server error:{Error message}
 
 ## Run as a standalone app:
   ```
