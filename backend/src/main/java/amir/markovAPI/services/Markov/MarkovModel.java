@@ -14,6 +14,7 @@ public class MarkovModel implements MarkovInterface{
     private final int prefixSize;
     private final int postfixSize;
 
+    //useful for knowing about when sentences end 
     private final HashSet<Character> punctuations=new HashSet(Arrays.asList('.','?','!',';'));;
 
     /**
@@ -72,25 +73,20 @@ public class MarkovModel implements MarkovInterface{
         }
         return sb.toString().trim();
     }
-    public void printChain(){
-        for (String key:markovNodes.keySet()){
-            System.out.println("\n"+key+"  --> "+markovNodes.get(key).postfixes.size());
-            markovNodes.get(key).postfixes.stream().forEach(e -> System.out.println(e+"-"));
-        }
-    }
 
     public String generateText(int maxSize) {
         if(maxSize<=0){
-            throw new IllegalArgumentException("output size should be at least one");
+            throw new IllegalArgumentException("Output<=0 Error: output size should be at least one");
         }
-
+        if(this.markovNodes.size()==0){
+            throw new IllegalArgumentException("prefix+postfix>= input Error: These hyper parameters lead to an empty markov chain :( ");
+        }
+        //generate random number with the size of the dictionary we have
         Random r = new Random();
-        int n = 0;
-        // Grab a random starting point
-        int rn = r.nextInt(this.markovNodes.size());
-        String prefix = (String) this.markovNodes.keySet().toArray()[rn];
+        int randomNumber = r.nextInt(this.markovNodes.size());
 
-        // Create the output with this starting point as its only content
+        // Use the random prefix as the starting point of the sentence
+        String prefix = (String) this.markovNodes.keySet().toArray()[randomNumber];
         List<String> output = new ArrayList<>(Arrays.asList(prefix.split(" ")));
 
         while (true) {
@@ -99,12 +95,12 @@ public class MarkovModel implements MarkovInterface{
             if(this.markovNodes.containsKey(prefix)){
                 postfixes = this.markovNodes.get(prefix).postfixes;
             }else{
-                rn = r.nextInt(this.markovNodes.size());
-                prefix = (String) this.markovNodes.keySet().toArray()[rn];
+                randomNumber = r.nextInt(this.markovNodes.size());
+                prefix = (String) this.markovNodes.keySet().toArray()[randomNumber];
                 continue;
             }
-            rn = r.nextInt(postfixes.size());
-            String[] selectedPostfix=postfixes.get(rn).split(" ");
+            randomNumber = r.nextInt(postfixes.size());
+            String[] selectedPostfix=postfixes.get(randomNumber).split(" ");
             for(String str:selectedPostfix){
                 output.add(str.trim());
             }
@@ -118,8 +114,8 @@ public class MarkovModel implements MarkovInterface{
             String lastWord=output.get(output.size()-1).trim();
             if( punctuations.contains(lastWord.charAt(lastWord.length()-1))){
                 // we have reached the end of sentence. Start a new sentence randomly
-                rn = r.nextInt(this.markovNodes.size());
-                prefix = (String) this.markovNodes.keySet().toArray()[rn];
+                randomNumber = r.nextInt(this.markovNodes.size());
+                prefix = (String) this.markovNodes.keySet().toArray()[randomNumber];
             }else{
                 // continue the previous sentence
                 StringBuilder nextPrefix=new StringBuilder();
@@ -130,6 +126,15 @@ public class MarkovModel implements MarkovInterface{
             }
         }
     }
-
+    
+    /*
+    Helper function for debugging: Print the Markov chain
+    */
+    public void printChain(){
+        for (String key:markovNodes.keySet()){
+            System.out.println("\n"+key+"  --> "+markovNodes.get(key).postfixes.size());
+            markovNodes.get(key).postfixes.stream().forEach(e -> System.out.println(e+"-"));
+        }
+    }
 
 }

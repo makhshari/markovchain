@@ -31,7 +31,7 @@ Make sure you have latest version of node installed. Also, you should have a nod
 
 # Steps to have frontend up and running:
 
-- First in the root directory, simply run:
+- First in the root of frontend directory, simply run:
 ```npm install```
 or 
 ``` yarn install ```

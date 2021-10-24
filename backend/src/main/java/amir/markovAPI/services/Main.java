@@ -9,27 +9,40 @@ public class Main {
 
     public static void main(String[] args) throws Exception {
 
-        String FILEPATH=args[0];
-        int PREFIXSIZE=Integer.valueOf(args[1]);
-        int POSTFIXSIZE=Integer.valueOf(args[2]);
-        int OUTPUTSIZE=Integer.valueOf(args[3]);
-
+        String FILEPATH;
+        int PREFIXSIZE;
+        int POSTFIXSIZE;
+        int OUTPUTSIZE;
+        try {
+            FILEPATH = args[0];
+            PREFIXSIZE=Integer.valueOf(args[1]);
+            POSTFIXSIZE=Integer.valueOf(args[2]);
+            OUTPUTSIZE=Integer.valueOf(args[3]);
+        }catch (Exception e){
+            throw new Exception("Missing/invalid arguments: Enter input file name as a String and prefix/postfix/output size as positive natural integers");
+        }
+        // get input from the input file
         Parser parser= Parser.getParser(FILEPATH);
-        String[] words=parser.stringToWords(parser.fileToString(FILEPATH));
+        String input= parser.fileToString(FILEPATH);
 
-        // construct the transformer, supplying the prefix length to use
-        MarkovModel markovModel = new MarkovModel(PREFIXSIZE,POSTFIXSIZE);
 
-        // train the transformer on our training set
-        markovModel.buildMarkovModel(words);
-        // this could be done multiple times...
-
-        // get our output string
-        String output = markovModel.generateText(OUTPUTSIZE);
-
-        // print it to the console
+        String output=processInput(input,PREFIXSIZE,POSTFIXSIZE,OUTPUTSIZE);
         System.out.println(output);
 
         System.exit(0);
+    }
+    // Pass the hyper paramters and the input text to the markov funtions
+    public static String processInput(String input, int PREFIXSIZE, int POSTFIXSIZE, int OUTPUTSIZE) throws Exception{
+
+        String[] words=Parser.stringToWords(input);
+
+        // Initialize the Markov class
+        MarkovModel markovModel = new MarkovModel(PREFIXSIZE,POSTFIXSIZE);
+
+        // Build the markov chain
+        markovModel.buildMarkovModel(words);
+
+        // Generate string with the built chain
+        return markovModel.generateText(OUTPUTSIZE);
     }
 }

@@ -43,7 +43,7 @@
 
 The project use Maven for dependency management. So make sure you can use maven in your environment.
 
-- Firs you need to run and package the source files by running Maven.
+- Firs you need to run and package the source files by running Maven. In the root of backend directory (here), run this command:
   ```
   mvn package
   ```
@@ -67,8 +67,5 @@ If you do not have Maven installed, follow (these steps)[https://maven.apache.or
 
 
 # Steps to run automated tests
-
-Simply run 
-```
- mvn test
-```
+When you first run ```mvn package```, you can see the result of automated tests in the console. If you want to re-run the test cases, simply run  
+```mvn test```

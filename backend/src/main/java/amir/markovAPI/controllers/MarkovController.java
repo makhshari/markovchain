@@ -2,8 +2,7 @@ package amir.markovAPI.controllers;
 
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
-import amir.markovAPI.services.Markov.*;
-import amir.markovAPI.services.Parser.*;
+import amir.markovAPI.services.*;
 
 import java.util.Collections;
 
@@ -20,13 +19,13 @@ public class MarkovController {
 
     ) throws Exception {
         try {
-            String[] words = Parser.stringToWords(input);
-            MarkovModel markovModel = new MarkovModel(prefixSize, postfixSize);
-            markovModel.buildMarkovModel(words);
-            return markovModel.generateText(outputSize);
-            //return Collections.singletonMap("response", markovModel.generateText(outputSize) );
+            return Main.processInput(input,prefixSize,postfixSize,outputSize);
+
+            /* If we want to return JSON:
+            return Collections.singletonMap("response", markovModel.generateText(outputSize) );
+            */
         }catch (Exception e){
-         return "error";
+         return "** Server error:"+ e.toString();
         }
     }
 
