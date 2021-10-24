@@ -47,7 +47,7 @@ The project use Maven for dependency management. So make sure you can use maven 
   ```
   mvn package
   ```
-If you do not have Maven installed, follow (these steps)[https://maven.apache.org/install.html] to install it for your environment.
+If you do not have Maven installed, follow [these steps](https://maven.apache.org/install.html) to install it for your environment.
 
 ## Run the server on localhost (API):
   Simply run the below command to have the server running in your localhost:8080 (as the default address).
