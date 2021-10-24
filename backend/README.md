@@ -49,13 +49,13 @@ The project use Maven for dependency management. So make sure you can use maven 
   ```
 If you do not have Maven installed, follow (these steps)[https://maven.apache.org/install.html] to install it for your environment.
 
-- Run the server on localhost (API):
+## Run the server on localhost (API):
   Simply run the below command to have the server running in your localhost:8080 (as the default address).
   ```
   mvn spring-boot:run
   ```
 
-- Run as a standalone app:
+## Run as a standalone app:
   ```
   java -cp target/markovAPI-0.0.1-SNAPSHOT.jar.original amir.markovAPI.services.Main samples/{FILE.txt} {PREFIX_SIZE} {POSTFIX_SIZE} {OUTPUT_SIZE}
   ```
