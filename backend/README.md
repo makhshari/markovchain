@@ -5,31 +5,31 @@
 ├── samples
 │   └── input.txt
 └── src
-    ├── main
+    ├── main # production code
             ├──java/amir/markovAPI
     │   │           ├── MarkovApiApplication.java #Spring Main File
-    │   │           ├── controllers      #Routers
-    │   │           │   └── MarkovController.java
-    │   │           └── services #Business Logic
+    │   │           ├── controllers      #routers
+    │   │           │   └── MarkovController.java 
+    │   │           └── services #all business logic
     │   │               ├── Main.java 
-    │   │               ├── Markov # Services related to Markov Chain
-    │   │               │   ├── MarkovInterface.java # Markov chain interface
-    │   │               │   ├── MarkovModel.java # Markov chain implementation
-    │   │               │   └── Node.java # Represent each state in Markov chain
-    │   │               └── Parser # Services related to reading/parsing files
+    │   │               ├── Markov # services related to Markov Chain
+    │   │               │   ├── MarkovInterface.java # markov chain interface
+    │   │               │   ├── MarkovModel.java # markov chain implementation
+    │   │               │   └── Node.java # represent each state in Markov chain
+    │   │               └── Parser # services related to reading/parsing files
     │   │                   ├── DocFileParser.java # parsing doc files
-    │   │                   ├── Parser.java # Main parsing functionalities
+    │   │                   ├── Parser.java # general parsing functionalities
     │   │                   └── TextFileParser.java # parsing text files
         │   └── resources
         │       ├── application.properties
 
-    └── test
+    └── test # test code
         ├── java/amir/markovAPI
-        │           ├── MarkovApiApplicationTests.java
-        │           └── test-services
-        │               ├── TestIO.java
-        │               └── TestMarkov.java
-        └── testdata
+        │           ├── MarkovApiApplicationTests.java # spring test file
+        │           └── test-services # testing api services
+        │               ├── TestIO.java # testing IO functionalities
+        │               └── TestMarkov.java # testing functionalities of markov chain
+        └── testdata # test files that are used in test methods
             ├── empty-file.txt
             ├── invalid-content.txt
             ├── invalid-file.xml
