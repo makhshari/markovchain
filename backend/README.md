@@ -57,9 +57,13 @@ If you do not have Maven installed, follow (these steps)[https://maven.apache.or
   Then you can call APIs. Currently there is only one API running:
   GET ```BASE_URL/output```
   Query Parameters (all required):
+  
   **input** -> String
+
   **outputSize** -> Positive natural integer
+
   **prefixSize** -> Positive natural integer
+  
   **postfixSize** -> Positive natural integer
 
   - Missing parameters -> You'll get a *bad request* error.
