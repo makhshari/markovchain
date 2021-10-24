@@ -11,7 +11,7 @@ This app is a full-stack implementation for text-generation using a Stochastic M
 
 
 ## How to use this app
-There are two ways to use this app:
+There are three ways to use this app:
 ### Web Application (frontend + backend)
 
 As it is shown in the GIF above, you can use it as a web application. All you need to do is to enter a story (and its' name), and tune three hyperparameters:
