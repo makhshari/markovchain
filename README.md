@@ -102,7 +102,8 @@ The server is designed to be robust against faulty inputs. Below I will describe
     - The server interprets this input as an invalid input and throws exception. The reason is that this input leads to an empty markov chain.
   - ```Bad hyper-parameters: negative/float/empty```
     - Server returns and exception and guide you to enter valid parameters. 
-
+- **Very large inputs**:
+    - I tried it with a few text files that were reasonably large and did not see problems. But I don't expect my implementation to be robust against large text files in the scale of GB.
 
 ## Frontend Error Handling
 - The React app is just a representation of how this app can be used in UI. Currently, the frontend is not robust against faulty inputs and might break with non-standard inputs. **Current version of frontend is meant to be used with standard inputs.**
@@ -121,7 +122,12 @@ There are automated tests for testing below functionalities:
 
 - **Testing IO Functionalities**: These tests will measure how our system reacts to invalid input files.
 - **Testing Markov Functionalities**: These tests will measure how certain functionalities related to markov chain operate in regards to different inputs. ```Building markov chain```and ```Generating text with markov chain``` are tested with different inputs and hyper paramteres.
-
+- **TBD**:
+    - I believe there can be more varying inputs than the ones I could think of.
+    - Testing it with large inputs.
+    - Automated test case generation.
+  
 # Next Steps
+- Finishing the mentioned TBD tasks such as UI error handling and handling large inputs.
 - Of course there are more sophisticated methods for text generation combining the idea of Markov Chain with [Reinforcement Learning](https://arxiv.org/pdf/1804.11258.pdf), [Huffman Coding](https://arxiv.org/ftp/arxiv/papers/1811/1811.04720.pdf). 
 - Markov implementation can be used for other goals such as [Text Summarization](https://dl.acm.org/doi/pdf/10.1145/383952.384042?casa_token=EV-Q3uVs9LYAAAAA:73LGvGkm0UpqTKjd4QwPlC1wazp-1oE5DYHU3cC-zjtfpqmJU3MecDoDI-vzVRDzP53QLfBCgaQYSw) which is an exciting goal to explore.
