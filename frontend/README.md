@@ -1,3 +1,28 @@
+# Project Structure
+.
+├── README.md
+├── package-lock.json
+├── package.json # Metadata about the project + list of dependency packages
+├── public # React public files
+│   ├── index.html
+│   ├── manifest.json
+│   └── robots.txt
+├── src # Frontend source code
+│   ├── App.css # CSS of the main page. Most components have inline CSS in case (not best practice!).
+│   ├── App.js # Root of the app
+│   ├── App.test.js
+│   ├── components # Root of the app
+│   │   ├── GeneratedStory.jsx # Includes the components for Markov's outputs
+│   │   └── Story.jsx # Includes the components for user inputs
+│   ├── globals.js # Global variables
+│   ├── index.css
+│   ├── index.js
+│   ├── logo.svg
+│   ├── reportWebVitals.js
+│   └── setupTests.js
+├── yarn-error.log
+└── yarn.lock
+
 # Frontend with React JS
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -22,7 +47,7 @@ You will also see any lint errors in the console.
 ### NOTE:
 If you're running your API server on any address other than ```localhost:8080```, make sure that you change the configs in the global constants file at ```src/globals.js```.
 
-# UI External Library
+# UI External Libraries
 - This project uses [React Bootstrap](https://react-bootstrap.github.io/) for most of the UI components (Buttons, TextFields)
 - For showing the generated output text like a type-writer, this project utilizes [react-typewriter-effect](https://github.com/kevoese/react-typewriter-effect) package.
 

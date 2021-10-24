@@ -14,7 +14,7 @@
     │   │           ├── controllers      #routers
     │   │           │   └── MarkovController.java 
     │   │           └── services #all business logic
-    │   │               ├── Main.java 
+    │   │               ├── Main.java # For running the standalone app
     │   │               ├── Markov # services related to Markov Chain
     │   │               │   ├── MarkovInterface.java # markov chain interface
     │   │               │   ├── MarkovModel.java # markov chain implementation
