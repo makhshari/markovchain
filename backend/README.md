@@ -52,7 +52,7 @@ If you do not have Maven installed, follow (these steps)[https://maven.apache.or
 - Run the server on localhost (API):
   Simply run the below command to have the server running in your localhost:8080 (as the default address).
   ```
- mvn spring-boot:run
+  mvn spring-boot:run
   ```
 
 - Run as a standalone app:
