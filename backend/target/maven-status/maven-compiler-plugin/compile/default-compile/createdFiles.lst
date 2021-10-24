@@ -1,9 +1,0 @@
-amir/markovAPI/services/Markov/Node.class
-amir/markovAPI/services/Markov/MarkovModel.class
-amir/markovAPI/MarkovApiApplication.class
-amir/markovAPI/services/Markov/MarkovInterface.class
-amir/markovAPI/services/Parser/TextFileParser.class
-amir/markovAPI/services/Parser/DocFileParser.class
-amir/markovAPI/services/Parser/Parser.class
-amir/markovAPI/services/Main.class
-amir/markovAPI/controllers/MarkovController.class
