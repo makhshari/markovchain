@@ -55,6 +55,7 @@ To give a very brief simple description of the idea: It's a stochastic model! :)
 
  Depends on how frequent a consecutive group of words (postfixes) appear after each group of consecutive words (prefixes), you decide on the next steps for each prefix.
 
+
 # About my implementation of Markov Chain
 This project has an object-oeriented point-of-view for building the markov chain. In this implementation, we isolate the concept of ```nodes/states``` in the markov chain in the ```Node``` class. Node class is meant to represent each state/node in the Markov chain. Hence, it holds information about itself (```value```) and a list of nodes that may appear after this node (```postfixes```).
 
@@ -66,6 +67,13 @@ So properties of each node/state in Node class are:
  At each step, the generator **randomly** choose a postfix from this list as the next state of a given state. 
 
 Our Markov Model needs to only hold a list of nodes, since each node has a list of nodes after it! So each node is good enough to decide and knoe enough about itself :) To have faster access to each node, we use a hashmap to store IDs -> Node to have O(1) access to retrieve the Node object of any state ID.
+
+To give a better definition of what we mean by prefix and postfix:
+ - **prefix** -> Number of consecutive words to consider as one state. So states in our implementation would be prefixes.
+ - **postfix** -> Number of consecutive words after the prefix to consider as the postfix of that state.
+ - **output** -> Number of words to generate. 
+
+For example for the sentence "Hello I am Amir" with prefix=2 and postfix=2, if we are at index 0 the current chain would be "Hello I" -> "am Amir"
 
 # Error handling
 
