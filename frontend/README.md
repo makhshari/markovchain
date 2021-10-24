@@ -1,8 +1,8 @@
 # Project Structure
+```
 .
-├── README.md
 ├── package-lock.json
-├── package.json # Metadata about the project + list of dependency packages
+├── package.json # Metadata about the project and list of dependency packages
 ├── public # React public files
 │   ├── index.html
 │   ├── manifest.json
@@ -22,6 +22,7 @@
 │   └── setupTests.js
 ├── yarn-error.log
 └── yarn.lock
+```
 
 # Frontend with React JS
 
