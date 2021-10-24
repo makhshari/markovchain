@@ -1,4 +1,4 @@
-# Getting Started with Create React App
+# Frontend with React JS
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 Make sure you have latest version of node installed. Also, you should have a node package manager installed. Having either (npm)[https://docs.npmjs.com/downloading-and-installing-node-js-and-npm] or (yarn)[https://classic.yarnpkg.com/lang/en/docs/install/#mac-stable] is recommended.
@@ -11,16 +11,23 @@ or
 ``` yarn install ```
 
 - Now, you should be able to see the node_modules directory in the root directory.
-- Simply run the below command to have the sevrer up and running on: 
- ```yarn start```
- or 
- ``` npm start ```
+- Simply run  ```yarn start```  or ``` npm start ``` to have the frontend up and running on: 
 
 These commands will Run the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view the app in the browser.
 
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
+
+### NOTE:
+If you're running your API server on any address other than ```localhost:8080```, make sure that you change the configs in the global constants file at ```src/globals.js```.
+
+# UI External Library
+- This project uses (React Bootstrap)[https://react-bootstrap.github.io/] for most of the UI components (Buttons, TextFields)
+- For showing the generated output text like a type-writer, this project utilizes (react-typewriter-effect)[https://github.com/kevoese/react-typewriter-effect] package.
+
+
+
 
 ## Other Available Scripts
 
