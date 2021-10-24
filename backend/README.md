@@ -58,13 +58,13 @@ If you do not have Maven installed, follow (these steps)[https://maven.apache.or
   GET ```BASE_URL/output```
   Query Parameters (all required):
   
-  **input** -> String
+  **input** -> Non-empty string containing at least one alphanumeric substring.
 
-  **outputSize** -> Positive natural integer
+  **outputSize** -> Positive natural integer.
 
-  **prefixSize** -> Positive natural integer
-  
-  **postfixSize** -> Positive natural integer
+  **prefixSize** -> Positive natural integer.
+
+  **postfixSize** -> Positive natural integer.
 
   - Missing parameters -> You'll get a *bad request* error.
   - Valid input -> You'll get the response as a string (Not JSON)
