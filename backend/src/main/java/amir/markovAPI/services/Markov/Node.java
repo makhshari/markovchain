@@ -5,8 +5,12 @@ import java.util.List;
 /**
  * Markov table:
  * for the sentence: "word1 word2 word3 word4 word5"
- * "word1 word2 word3" -> [word4, word5]
- * String -> List
+ * if prefix=3 and postfix=2
+ * "word1 word2 word3" -> "word4 word5"
+ * 
+ * Node class:
+ * value -> word1 word2 word3
+ * postfixes -> ["word4 word5", ...]
  **/
 
 public class Node {

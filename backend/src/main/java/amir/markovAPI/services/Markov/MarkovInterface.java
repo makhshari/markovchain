@@ -1,6 +1,5 @@
 package amir.markovAPI.services.Markov;
 
-import java.util.HashMap;
 import java.util.Map;
 
 public interface MarkovInterface {

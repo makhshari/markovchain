@@ -27,8 +27,6 @@ public class MarkovModel implements MarkovInterface{
      * 
      * "word1 word2 word3" -> node N
      * node N.postfixes = "word4 word5"
-     * 
-     * 
      **/
 
 
