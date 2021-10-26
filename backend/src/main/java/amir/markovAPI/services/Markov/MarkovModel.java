@@ -3,7 +3,7 @@ package amir.markovAPI.services.Markov;
 import java.util.*;
 
 /**
- * Transforms a body of text according to a Markov Chain algorith.
+ * This class represents the whole markov chain model 
  */
 
 public class MarkovModel implements MarkovInterface{
@@ -20,8 +20,15 @@ public class MarkovModel implements MarkovInterface{
     /**
      * Markov table:
      * for the sentence: "word1 word2 word3 word4 word5"
-     * "word1 word2 word3" -> [word4, word5]
-     * String -> List
+     * "word1 word2 word3" -> "word4 word5"
+     * 
+     * We keep "word1 word2 word3" in markovNodes
+     * each node will have a list of postfixes. So:
+     * 
+     * "word1 word2 word3" -> node N
+     * node N.postfixes = "word4 word5"
+     * 
+     * 
      **/
 
 
